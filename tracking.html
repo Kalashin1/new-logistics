@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Shipment | GlobalShip</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            padding-bottom: 30px;
+            border-left: 2px solid #e5e7eb;
+        }
+        
+        .timeline-item:last-child {
+            padding-bottom: 0;
+            border-left: 2px solid transparent;
+        }
+        
+        .timeline-icon {
+            position: absolute;
+            left: -15px;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #3b82f6;
+            color: white;
+        }
+        
+        .timeline-item.active .timeline-icon {
+            background-color: #10b981;
+        }
+        
+        .timeline-item.completed .timeline-icon {
+            background-color: #10b981;
+        }
+        
+        .timeline-item.pending .timeline-icon {
+            background-color: #e5e7eb;
+            color: #6b7280;
+        }
+        
+        .map-container {
+            height: 400px;
+            width: 100%;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-blue-600 font-bold text-2xl">Global<span class="text-gray-800">Ship</span></span>
+                    </div>
+                    <div class="hidden md:ml-10 md:flex md:space-x-8">
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Track</a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Services</a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center">
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">
+                        Get a Quote
+                    </button>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="hidden md:hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
+                <a href="#" class="bg-blue-50 border-blue-500 text-blue-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Track</a>
+                <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Services</a>
+                <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Contact</a>
+                <div class="mt-4 pl-3 pr-4 py-2">
+                    <button class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">
+                        Get a Quote
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Track Shipment Section -->
+    <section class="pt-32 pb-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Track Your Shipment</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Enter your tracking number to get real-time updates on your shipment</p>
+            </div>
+            
+            <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6 mb-16">
+                <div class="flex flex-col md:flex-row gap-4">
+                    <input type="text" placeholder="Enter tracking number" class="flex-grow px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md text-lg font-medium transition duration-300 whitespace-nowrap">
+                        Track Shipment
+                    </button>
+                </div>
+                <p class="text-gray-500 text-sm mt-3">Example tracking number: GS123456789</p>
+            </div>
+            
+            <!-- Shipment Details -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="p-6 border-b border-gray-200">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2">Shipment Details</h2>
+                    <p class="text-gray-600">Tracking Number: <span class="font-semibold">GS123456789</span></p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8 p-6">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Shipment Information</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="text-gray-500 text-sm">Status</p>
+                                <p class="font-medium text-green-600">In Transit</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-sm">Estimated Delivery</p>
+                                <p class="font-medium">June 15, 2023</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-sm">Shipping Method</p>
+                                <p class="font-medium">Express Air Freight</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-sm">Weight</p>
+                                <p class="font-medium">15.5 kg</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Route Details</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="text-gray-500 text-sm">Origin</p>
+                                <p class="font-medium">New York, USA</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-sm">Destination</p>
+                                <p class="font-medium">London, UK</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-sm">Current Location</p>
+                                <p class="font-medium">Paris, France</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-sm">Last Update</p>
+                                <p class="font-medium">June 12, 2023 - 14:30 GMT</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Map Section -->
+                <div class="p-6 border-t border-gray-200">
+                    <h3 class="text-lg font-semibold mb-4">Current Location</h3>
+                    <div class="map-container">
+                        <!-- This would be replaced with actual Google Maps integration -->
+                        <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fas fa-map-marked-alt text-4xl text-gray-400 mb-2"></i>
+                                <p class="text-gray-500">Map would display here with actual Google Maps integration</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Section -->
+                <div class="p-6 border-t border-gray-200">
+                    <h3 class="text-lg font-semibold mb-6">Shipment Progress</h3>
+                    <div class="space-y-4">
+                        <!-- Timeline Item 1 (Completed) -->
+                        <div class="timeline-item completed">
+                            <div class="timeline-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-semibold">Shipment Delivered</h4>
+                                        <p class="text-gray-600 text-sm">June 15, 2023 - 10:15 AM</p>
+                                    </div>
+                                    <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Completed</span>
+                                </div>
+                                <p class="mt-2 text-gray-600">Shipment has been successfully delivered to the recipient in London, UK.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Timeline Item 2 (Active) -->
+                        <div class="timeline-item active">
+                            <div class="timeline-icon">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-semibold">Out for Delivery</h4>
+                                        <p class="text-gray-600 text-sm">June 15, 2023 - 08:30 AM</p>
+                                    </div>
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">In Progress</span>
+                                </div>
+                                <p class="mt-2 text-gray-600">Shipment is out for delivery with the local courier in London.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Timeline Item 3 (Pending) -->
+                        <div class="timeline-item">
+                            <div class="timeline-icon">
+                                <i class="fas fa-plane"></i>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-semibold">Arrived at Destination</h4>
+                                        <p class="text-gray-600 text-sm">June 14, 2023 - 11:45 PM</p>
+                                    </div>
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Pending</span>
+                                </div>
+                                <p class="mt-2 text-gray-600">Shipment has arrived at London Heathrow Airport and is awaiting customs clearance.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Timeline Item 4 (Pending) -->
+                        <div class="timeline-item">
+                            <div class="timeline-icon">
+                                <i class="fas fa-plane-departure"></i>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-semibold">Departed Origin</h4>
+                                        <p class="text-gray-600 text-sm">June 13, 2023 - 09:20 PM</p>
+                                    </div>
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Pending</span>
+                                </div>
+                                <p class="mt-2 text-gray-600">Shipment has departed from JFK International Airport, New York.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Timeline Item 5 (Pending) -->
+                        <div class="timeline-item">
+                            <div class="timeline-icon">
+                                <i class="fas fa-warehouse"></i>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-semibold">Processed at Origin</h4>
+                                        <p class="text-gray-600 text-sm">June 12, 2023 - 02:30 PM</p>
+                                    </div>
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Pending</span>
+                                </div>
+                                <p class="mt-2 text-gray-600">Shipment has been processed and is ready for departure from New York.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Timeline Item 6 (Pending) -->
+                        <div class="timeline-item">
+                            <div class="timeline-icon">
+                                <i class="fas fa-box-open"></i>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-semibold">Shipment Picked Up</h4>
+                                        <p class="text-gray-600 text-sm">June 11, 2023 - 10:15 AM</p>
+                                    </div>
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Pending</span>
+                                </div>
+                                <p class="mt-2 text-gray-600">Shipment has been picked up from the sender in New York.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">GlobalShip</h3>
+                    <p class="text-gray-400 mb-4">Your trusted partner for global logistics and shipping solutions.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Track Shipment</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Services</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Ocean Freight</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Air Freight</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Land Transportation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Customs Clearance</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Subscribe to our newsletter for the latest updates and offers.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-md text-gray-900 w-full focus:outline-none">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r-md transition duration-300">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 GlobalShip. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // For a real implementation, you would add Google Maps API integration here
+        // This is just a placeholder for the demo
+        function initMap() {
+            // This would be replaced with actual Google Maps initialization
+            console.log("Google Maps would be initialized here");
+        }
+    </script>
+</body>
+</html>

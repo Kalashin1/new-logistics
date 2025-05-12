@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | GlobalShip</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .contact-card {
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .map-container {
+      height: 400px;
+      width: 100%;
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+
+    .form-input:focus {
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+    }
+
+    .floating-label {
+      position: absolute;
+      pointer-events: none;
+      left: 15px;
+      top: 10px;
+      transition: 0.2s ease all;
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+
+    input:focus~.floating-label,
+    input:not(:placeholder-shown)~.floating-label,
+    textarea:focus~.floating-label,
+    textarea:not(:placeholder-shown)~.floating-label {
+      top: -10px;
+      left: 10px;
+      font-size: 0.75rem;
+      background: white;
+      padding: 0 5px;
+      color: #3b82f6;
+    }
+  </style>
+</head>
+
+<body class="font-sans antialiased text-gray-800">
+  <!-- Navigation -->
+  <nav class="bg-white shadow-lg fixed w-full z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <div class="flex-shrink-0 flex items-center">
+            <span class="text-blue-600 font-bold text-2xl">Global<span class="text-gray-800">Ship</span></span>
+          </div>
+          <div class="hidden md:ml-10 md:flex md:space-x-8">
+            <a href="#"
+              class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+            <a href="#"
+              class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Track</a>
+            <a href="#"
+              class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Services</a>
+            <a href="contact.html"
+              class="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Contact</a>
+          </div>
+        </div>
+        <div class="hidden md:ml-6 md:flex md:items-center">
+          <button
+            class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">
+            Get a Quote
+          </button>
+        </div>
+        <div class="-mr-2 flex items-center md:hidden">
+          <button type="button"
+            class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+            aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+            <span class="sr-only">Open main menu</span>
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden" id="mobile-menu">
+      <div class="pt-2 pb-3 space-y-1">
+        <a href="#"
+          class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
+        <a href="#"
+          class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Track</a>
+        <a href="#"
+          class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Services</a>
+        <a href="contact.html"
+          class="bg-blue-50 border-blue-500 text-blue-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Contact</a>
+        <div class="mt-4 pl-3 pr-4 py-2">
+          <button
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">
+            Get a Quote
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contact Hero Section -->
+  <section class="pt-32 pb-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Get in Touch With Us</h1>
+        <p class="text-xl max-w-3xl mx-auto">Our team is ready to assist you with all your shipping and logistics needs.
+          Reach out anytime!</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- Contact Card 1 -->
+        <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-xl p-6 contact-card">
+          <div class="flex items-center mb-4">
+            <div class="bg-blue-500 bg-opacity-20 p-3 rounded-full mr-4">
+              <i class="fas fa-phone-alt text-blue-300 text-xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold">Phone Support</h3>
+          </div>
+          <p class="text-blue-100 mb-4">Available 24/7 for urgent inquiries</p>
+          <a href="tel:+18005551234" class="text-white hover:text-blue-200 font-medium text-lg">+1 (800) 555-1234</a>
+        </div>
+
+        <!-- Contact Card 2 -->
+        <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-xl p-6 contact-card">
+          <div class="flex items-center mb-4">
+            <div class="bg-blue-500 bg-opacity-20 p-3 rounded-full mr-4">
+              <i class="fas fa-envelope text-blue-300 text-xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold">Email Us</h3>
+          </div>
+          <p class="text-blue-100 mb-4">Typically respond within 2 business hours</p>
+          <a href="mailto:info@globalship.com"
+            class="text-white hover:text-blue-200 font-medium text-lg">info@globalship.com</a>
+        </div>
+
+        <!-- Contact Card 3 -->
+        <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-xl p-6 contact-card">
+          <div class="flex items-center mb-4">
+            <div class="bg-blue-500 bg-opacity-20 p-3 rounded-full mr-4">
+              <i class="fas fa-comments text-blue-300 text-xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold">Live Chat</h3>
+          </div>
+          <p class="text-blue-100 mb-4">Available Mon-Fri, 8am-6pm EST</p>
+          <button
+            class="bg-white text-blue-600 hover:bg-blue-50 px-6 py-2 rounded-md font-medium transition duration-300">
+            Start Chat
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="lg:grid lg:grid-cols-2 lg:gap-16">
+        <!-- Contact Form -->
+        <div class="mb-12 lg:mb-0">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
+          <p class="text-gray-600 mb-8">Have questions about our services or need a custom shipping solution? Fill out
+            the form below and our team will get back to you promptly.</p>
+
+          <form class="space-y-6">
+            <div class="relative">
+              <input type="text" id="name" placeholder=" "
+                class="w-full px-4 py-3 border border-gray-300 rounded-md form-input focus:outline-none focus:border-blue-500">
+              <label for="name" class="floating-label">Full Name</label>
+            </div>
+
+            <div class="relative">
+              <input type="email" id="email" placeholder=" "
+                class="w-full px-4 py-3 border border-gray-300 rounded-md form-input focus:outline-none focus:border-blue-500">
+              <label for="email" class="floating-label">Email Address</label>
+            </div>
+
+            <div class="relative">
+              <input type="tel" id="phone" placeholder=" "
+                class="w-full px-4 py-3 border border-gray-300 rounded-md form-input focus:outline-none focus:border-blue-500">
+              <label for="phone" class="floating-label">Phone Number (Optional)</label>
+            </div>
+
+            <div class="relative">
+              <select id="subject"
+                class="w-full px-4 py-3 border border-gray-300 rounded-md form-input focus:outline-none focus:border-blue-500 appearance-none bg-white">
+                <option value="" disabled selected>Select a subject</option>
+                <option value="general">General Inquiry</option>
+                <option value="quote">Request a Quote</option>
+                <option value="tracking">Tracking Assistance</option>
+                <option value="customs">Customs Clearance</option>
+                <option value="other">Other</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <i class="fas fa-chevron-down"></i>
+              </div>
+            </div>
+
+            <div class="relative">
+              <textarea id="message" rows="5" placeholder=" "
+                class="w-full px-4 py-3 border border-gray-300 rounded-md form-input focus:outline-none focus:border-blue-500"></textarea>
+              <label for="message" class="floating-label">Your Message</label>
+            </div>
+
+            <div class="flex items-center">
+              <input id="agree-terms" type="checkbox"
+                class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+              <label for="agree-terms" class="ml-2 block text-sm text-gray-700">
+                I agree to the <a href="#" class="text-blue-600 hover:text-blue-800">privacy policy</a> and <a href="#"
+                  class="text-blue-600 hover:text-blue-800">terms of service</a>
+              </label>
+            </div>
+
+            <button type="submit"
+              class="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md text-lg font-medium transition duration-300 flex items-center justify-center">
+              <i class="fas fa-paper-plane mr-2"></i> Send Message
+            </button>
+          </form>
+        </div>
+
+        <!-- Office Locations -->
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Global Offices</h2>
+          <p class="text-gray-600 mb-8">With offices in major cities worldwide, we're always close to serve your
+            shipping needs.</p>
+
+          <!-- Office Card 1 -->
+          <div class="bg-white rounded-lg shadow-md p-6 mb-6 contact-card">
+            <div class="flex items-start">
+              <div class="bg-blue-100 p-3 rounded-full mr-4">
+                <i class="fas fa-building text-blue-600"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">New York Headquarters</h3>
+                <div class="space-y-2 text-gray-600">
+                  <p class="flex items-center">
+                    <i class="fas fa-map-marker-alt mr-2 text-blue-500"></i>
+                    123 Shipping Lane, Suite 500<br>
+                    New York, NY 10001, USA
+                  </p>
+                  <p class="flex items-center">
+                    <i class="fas fa-phone-alt mr-2 text-blue-500"></i>
+                    +1 (212) 555-7890
+                  </p>
+                  <p class="flex items-center">
+                    <i class="fas fa-clock mr-2 text-blue-500"></i>
+                    Mon-Fri: 8:00 AM - 6:00 PM EST
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Office Card 2 -->
+          <div class="bg-white rounded-lg shadow-md p-6 mb-6 contact-card">
+            <div class="flex items-start">
+              <div class="bg-blue-100 p-3 rounded-full mr-4">
+                <i class="fas fa-building text-blue-600"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">London Office</h3>
+                <div class="space-y-2 text-gray-600">
+                  <p class="flex items-center">
+                    <i class="fas fa-map-marker-alt mr-2 text-blue-500"></i>
+                    45 Portside Road<br>
+                    London E14 9ST, UK
+                  </p>
+                  <p class="flex items-center">
+                    <i class="fas fa-phone-alt mr-2 text-blue-500"></i>
+                    +44 20 7946 0958
+                  </p>
+                  <p class="flex items-center">
+                    <i class="fas fa-clock mr-2 text-blue-500"></i>
+                    Mon-Fri: 9:00 AM - 5:00 PM GMT
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Office Card 3 -->
+          <div class="bg-white rounded-lg shadow-md p-6 contact-card">
+            <div class="flex items-start">
+              <div class="bg-blue-100 p-3 rounded-full mr-4">
+                <i class="fas fa-building text-blue-600"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">Hong Kong Office</h3>
+                <div class="space-y-2 text-gray-600">
+                  <p class="flex items-center">
+                    <i class="fas fa-map-marker-alt mr-2 text-blue-500"></i>
+                    Unit 1208, 12/F, Harbour Centre<br>
+                    Wan Chai, Hong Kong
+                  </p>
+                  <p class="flex items-center">
+                    <i class="fas fa-phone-alt mr-2 text-blue-500"></i>
+                    +852 5808 1234
+                  </p>
+                  <p class="flex items-center">
+                    <i class="fas fa-clock mr-2 text-blue-500"></i>
+                    Mon-Fri: 9:00 AM - 6:00 PM HKT
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Find Us Around the World</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">With over 50 offices across 30 countries, we're never far
+          from your shipment</p>
+      </div>
+
+      <div class="map-container bg-gray-200 rounded-xl overflow-hidden relative">
+        <!-- This would be replaced with actual Google Maps integration -->
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="text-center p-8 bg-white bg-opacity-90 rounded-lg shadow-lg max-w-md">
+            <i class="fas fa-map-marked-alt text-5xl text-blue-500 mb-4"></i>
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">Interactive Map</h3>
+            <p class="text-gray-600 mb-4">This would display an interactive Google Map with all our office locations
+              marked.</p>
+            <button
+              class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md font-medium transition duration-300">
+              View All Locations
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Quick answers to common questions about our services</p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        <!-- FAQ Item 1 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none"
+            onclick="toggleFAQ(1)">
+            <h3 class="text-lg font-semibold text-gray-900">What shipping methods do you offer?</h3>
+            <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300" id="faq-icon-1"></i>
+          </button>
+          <div class="px-6 pb-6 hidden" id="faq-content-1">
+            <p class="text-gray-600">We offer a comprehensive range of shipping solutions including express air freight,
+              ocean freight (FCL and LCL), land transportation, rail freight, and multimodal solutions. Our logistics
+              experts can help you choose the most efficient and cost-effective method for your specific needs.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 2 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none"
+            onclick="toggleFAQ(2)">
+            <h3 class="text-lg font-semibold text-gray-900">How can I track my shipment?</h3>
+            <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300" id="faq-icon-2"></i>
+          </button>
+          <div class="px-6 pb-6 hidden" id="faq-content-2">
+            <p class="text-gray-600">You can track your shipment 24/7 through our online tracking system by entering
+              your tracking number. We also provide email and SMS notifications at key milestones. For complex
+              shipments, you can contact our customer service team who will provide personalized updates.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none"
+            onclick="toggleFAQ(3)">
+            <h3 class="text-lg font-semibold text-gray-900">Do you handle customs clearance?</h3>
+            <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300" id="faq-icon-3"></i>
+          </button>
+          <div class="px-6 pb-6 hidden" id="faq-content-3">
+            <p class="text-gray-600">Yes, we offer complete customs brokerage services in all countries we operate in.
+              Our team of licensed customs brokers will handle all documentation, duties, and taxes to ensure smooth
+              clearance of your goods. We stay updated on all regulatory changes to prevent delays.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 4 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none"
+            onclick="toggleFAQ(4)">
+            <h3 class="text-lg font-semibold text-gray-900">What are your packaging requirements?</h3>
+            <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300" id="faq-icon-4"></i>
+          </button>
+          <div class="px-6 pb-6 hidden" id="faq-content-4">
+            <p class="text-gray-600">Packaging requirements vary by transport mode and commodity type. Generally, goods
+              should be packed to withstand international transit conditions. We offer packaging consultation services
+              and can arrange professional packing for fragile, high-value, or unusual items at our facilities.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 5 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none"
+            onclick="toggleFAQ(5)">
+            <h3 class="text-lg font-semibold text-gray-900">How do I get a shipping quote?</h3>
+            <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300" id="faq-icon-5"></i>
+          </button>
+          <div class="px-6 pb-6 hidden" id="faq-content-5">
+            <p class="text-gray-600">You can request a quote through our online form, by email, or by calling our sales
+              team. For accurate pricing, please provide details such as origin/destination, dimensions, weight,
+              commodity type, and desired service level. We typically respond with competitive quotes within 2 business
+              hours.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <p class="text-gray-600 mb-6">Didn't find what you were looking for?</p>
+        <button
+          class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-md text-lg font-medium transition duration-300">
+          Contact Our Support Team
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div>
+          <h3 class="text-xl font-bold mb-4">GlobalShip</h3>
+          <p class="text-gray-400 mb-4">Your trusted partner for global logistics and shipping solutions.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Track Shipment</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Services</a></li>
+            <li><a href="contact.html" class="text-gray-400 hover:text-white transition duration-300">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Services</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Ocean Freight</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Air Freight</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Land Transportation</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Customs Clearance</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
+          <p class="text-gray-400 mb-4">Subscribe to our newsletter for the latest updates and offers.</p>
+          <form class="flex">
+            <input type="email" placeholder="Your email"
+              class="px-4 py-2 rounded-l-md text-gray-900 w-full focus:outline-none">
+            <button type="submit" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r-md transition duration-300">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 mb-4 md:mb-0">© 2023 GlobalShip. All rights reserved.</p>
+        <div class="flex space-x-6">
+          <a href="#" class="text-gray-400 hover:text-white transition duration-300">Privacy Policy</a>
+          <a href="#" class="text-gray-400 hover:text-white transition duration-300">Terms of Service</a>
+          <a href="#" class="text-gray-400 hover:text-white transition duration-300">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function () {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+
+    // FAQ toggle function
+    function toggleFAQ(id) {
+      const content = document.getElementById(`faq-content-${id}`);
+      const icon = document.getElementById(`faq-icon-${id}`);
+
+      content.classList.toggle('hidden');
+      icon.classList.toggle('transform');
+      icon.classList.toggle('rotate-180');
+    }
+
+    // Form validation would go here
+    document.querySelector('form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      // Form validation and submission logic would go here
+      alert('Thank you for your message! We will get back to you soon.');
+      this.reset();
+    });
+
+    // For a real implementation, you would add Google Maps API integration here
+    function initMap() {
+      // This would be replaced with actual Google Maps initialization
+      console.log("Google Maps would be initialized here");
+    }
+  </script>
+</body>
+
+</html>
